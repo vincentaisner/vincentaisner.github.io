@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent's Portfolio</title>
+    <script src="https://kit.fontawesome.com/33972b331a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <img src="images/logo.png" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#artworks">Artworks</a></li>
+                    <li><a href="#contact">Socials</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p style="font-family:'Lucida Sans';">HI THAT'S ME LMAO -></p>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/me.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title2">About <span>Me</span></h1>
+                    <p style="font-family: 'Lucida Sans';">Hi, I am Vincent Aisner D. Herradura. 
+                        I'm from Talisay, Batangas, Philippines. I'm an aspiring website developer and I sometimes like to 
+                        draw. I have multiple hobbies to do in my free time like drawing, watching different shows,
+                        mobile and pc gaming, and i also like to listen and play guitar. I've created this portfolio website to 
+                        explore web development and to showcase my art to you guys.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="artworks">
+        <div class="container">
+            <h1 class="sub-title">My <span>Artworks</span></h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/a8.png">
+                </div>
+                <div class="work">
+                    <img src="images/a6.png">
+                </div>
+                <div class="work">
+                    <img src="images/a4.png">
+                </div>
+                <div class="work">
+                    <img src="images/a10.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/a2.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/a3.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/hb.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/a9.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/gwen.jpg">
+                </div>
+                <div class="work">
+                    <img src="images/a1.jpg">
+                </div>
+            </div>
+
+            <div class="popup">
+                <span>&times;</span>
+                <img src="images/a8.png">
+            </div>
+
+            <script>
+                document.querySelectorAll('.work-list img').forEach(work =>{
+                    work.onclick = () =>{
+                        document.querySelector('.popup').style.display = 'block';
+                        document.querySelector('.popup img').src = work.getAttribute('src');
+                    }
+                }); 
+                document.querySelector('.popup').onclick = () =>{
+                    document.querySelector('.popup').style.display = 'none';
+                }
+            </script>
+            <div class="btn">
+                <button id="seeMoreBtn" class="btn">See more</button>
+                <button id="seeLessBtn" class="btn" style="display: none;">See less</button>
+            </div>
+            
+            <script>
+                var work = document.querySelectorAll('.work');
+                var seeMoreBtn = document.getElementById('seeMoreBtn');
+                var seeLessBtn = document.getElementById('seeLessBtn');
+                var currentTiming = 2;
+                
+                function toggleVisibility(startIndex, endIndex, displayValue) {
+                    for (var i = startIndex; i < endIndex; i++) {
+                        if (work[i]) {
+                            work[i].style.display = displayValue;
+                        }
+                    }
+                }
+                
+                function showMoreWorks() {
+                    toggleVisibility(currentTiming, currentTiming + 8, 'block');
+                    currentTiming += 2;
+                    if (currentTiming <= work.length) {
+                        seeMoreBtn.style.display = 'none';
+                        seeLessBtn.style.display = 'block';
+                    }
+                }
+                
+                function showLessWorks() {
+                    currentTiming -= 2;
+                    toggleVisibility(currentTiming, currentTiming + 8, 'none');
+                    if (currentTiming <= 2) {
+                        seeLessBtn.style.display = 'none';
+                        seeMoreBtn.style.display = 'block';
+                    }
+                }
+                
+                seeMoreBtn.addEventListener('click', showMoreWorks);
+                seeLessBtn.addEventListener('click', showLessWorks);
+            </script>
+        </div>
+    </div>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title2">Reach <span>Me</span></h1>
+                    <p style="font-family: 'Lucida Sans';"><i class="fa-solid fa-paper-plane"></i></i>vincentaisner12@gmail.com</p>
+                    <p style="font-family: 'Lucida Sans';"><i class="fa-solid fa-phone"></i>09762740958</p>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/VincentAisnerDeleonHerradura"><i class="fab fa-facebook"></i></i></a>
+                        <a href="https://www.instagram.com/bisent.arts/"><i class="fab fa-instagram"></i></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]', {
+	speed: 300,
+	speedAsDuration: true
+});
+    </script>
+</body>
+</html>
